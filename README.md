@@ -1,4 +1,4 @@
-# dolibarr (Piwik) backup and restore
+# dolibarr backup
 
 ![GitHub all releases](https://img.shields.io/github/downloads/sebastienserre/dolibarr-backup/total?style=flat-square)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/sebastienserre/dolibarr-backup?style=flat-square)
