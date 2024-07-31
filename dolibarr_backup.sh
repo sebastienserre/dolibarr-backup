@@ -59,8 +59,12 @@ then
 		done
 	fi
 fi
-
-rsync -e ssh -avz ${backupdir}/* ${remoteBackup}:${remotePath}
+if [ ${method} = 'rsync' ]
+then
+  rsync -e ssh -avz ${backupdir}/* ${remoteBackup}:${remotePath}
+else
+  scp ${backupdir}/${nameBackupFileDir} ${remoteBackup}:${remotePath}
+fi
 echo
 echo "DONE!"
 echo "Backup created: ${backupdir}"

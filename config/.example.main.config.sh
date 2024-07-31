@@ -35,10 +35,13 @@ dolibarrBackupFiles='/html/htdocs/conf/conf.php'
 maxNrOfBackups=12
 
 # File names for backup files
-nameBackupFileDir="${currentDate}_dolibarro-data.tar.gz"
+nameBackupFileDir="${currentDate}_dolibarr-data.tar.gz"
 
 # TODO: SSH server
 remoteBackup='user@example.com'
 
 # TODO: Remote path
 remotePath='/path/to/remote/backup/directory'
+
+#scp/rsync
+method='scp'
