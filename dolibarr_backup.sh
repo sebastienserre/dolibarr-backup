@@ -11,7 +11,7 @@
 # You have to customize the following config files: .main.config.sh and .database.config.cnf
 #
 
-. config/.main.config.sh
+. /home/sc1sese9006/dolibarr-backup/config/.main.config.sh
 
 # Function for error messages
 errorecho() { cat <<< "$@" 1>&2; }
@@ -34,9 +34,20 @@ else
 fi
 
 #
+# Backup Dolibarr DB
+#
+echo "1. Backup Dolibarr's DB..."
+mysqldump "${dbname}" -h "${dbhost}" -u "${dbuser}" -P "${dbport}" --protocol=tcp --single-transaction --quick --add-drop-table=TRUE --tables -c -e --hex-blob --default-character-set=utf8 --no-tablespaces -p"sv3XAgMW^8nE" > "${backupdir}/${dumpfile}"
+
+#mysqldump sc1sese9006_compta -h localhost -u sc1sese9006_compta -P 3306 --protocol=tcp --single-transaction --quick --add-drop-table=TRUE --tables -c -e --hex-blob --default-character-set=utf8 --no-tablespaces -p"sv3XAgMW^8nE" > "${backupdir}/${dumpfile}"
+
+#mysqldump sc1sese9006_compta -h localhost -u sc1sese9006_compta -p"sv3XAgMW^8nE"  -l --single-transaction -K --add-drop-table=TRUE --tables -c -e --hex-blob --default-character-set=utf8 > "${backupdir}/${dumpfile}"
+
+#
 # Backup Dolibarr
 #
 echo "2. Backup Dolibarr's files..."
+
 tar -cpzf "${backupdir}/${nameBackupFileDir}" "${pathTodolibarr}" ${dolibarrBackupFiles}
 echo "File backup completed!"
 echo
@@ -61,8 +72,11 @@ then
 fi
 if [ ${method} = 'rsync' ]
 then
+echo "rsync"
   rsync -e ssh -avz ${backupdir}/* ${remoteBackup}:${remotePath}
 else
+echo "scp"
+echo ${remoteBackup}:${remotePath}
   scp ${backupdir}/${nameBackupFileDir} ${remoteBackup}:${remotePath}
 fi
 echo
