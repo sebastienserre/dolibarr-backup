@@ -39,10 +39,6 @@ fi
 echo "1. Backup Dolibarr's DB..."
 mysqldump "${dbname}" -h "${dbhost}" -u "${dbuser}" -P "${dbport}" --protocol=tcp --single-transaction --quick --add-drop-table=TRUE --tables -c -e --hex-blob --default-character-set=utf8 --no-tablespaces -p"sv3XAgMW^8nE" > "${backupdir}/${dumpfile}"
 
-#mysqldump sc1sese9006_compta -h localhost -u sc1sese9006_compta -P 3306 --protocol=tcp --single-transaction --quick --add-drop-table=TRUE --tables -c -e --hex-blob --default-character-set=utf8 --no-tablespaces -p"sv3XAgMW^8nE" > "${backupdir}/${dumpfile}"
-
-#mysqldump sc1sese9006_compta -h localhost -u sc1sese9006_compta -p"sv3XAgMW^8nE"  -l --single-transaction -K --add-drop-table=TRUE --tables -c -e --hex-blob --default-character-set=utf8 > "${backupdir}/${dumpfile}"
-
 #
 # Backup Dolibarr
 #
