@@ -45,11 +45,3 @@ remotePath='/path/to/remote/backup/directory'
 
 #scp/rsync
 method='scp'
-
-#MySQL credentials
-dbname='dbname'
-dbhost='localhost'
-dbport='3306'
-dbuser='dbuser'
-dbpassword='dbpassword'
-dbdumpfile='"${currentDate}"_dolibarr_db.sql'

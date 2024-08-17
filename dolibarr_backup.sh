@@ -37,7 +37,7 @@ fi
 # Backup Dolibarr DB
 #
 echo "1. Backup Dolibarr's DB..."
-mysqldump "${dbname}" -h "${dbhost}" -u "${dbuser}" -P "${dbport}" --protocol=tcp --single-transaction --quick --add-drop-table=TRUE --tables -c -e --hex-blob --default-character-set=utf8 --no-tablespaces -p"sv3XAgMW^8nE" > "${backupdir}/${dumpfile}"
+mysqldump "${dbname}" -h "${dbhost}" -u "${dbuser}" -P "${dbport}" --protocol=tcp --single-transaction --quick --add-drop-table=TRUE --tables -c -e --hex-blob --default-character-set=utf8 --no-tablespaces -p"${password}" > "${backupdir}/${dumpfile}"
 
 #
 # Backup Dolibarr
@@ -74,6 +74,7 @@ else
 echo "scp"
 echo ${remoteBackup}:${remotePath}
   scp ${backupdir}/${nameBackupFileDir} ${remoteBackup}:${remotePath}
+  scp ${backupdir}/${dumpfile} ${remoteBackup}:${remotePath}
 fi
 echo
 echo "DONE!"
